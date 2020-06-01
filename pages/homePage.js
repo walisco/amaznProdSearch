@@ -58,7 +58,7 @@ var HomePage = function () {
   }
 
   this.selectItem = async function (value) {
-      await element(by.partialLinkText(value)).click();
+      await element.all(by.partialLinkText(value)).first().click();
       return await addToBasket.click()
   }
 
