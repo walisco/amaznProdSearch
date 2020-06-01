@@ -8,6 +8,19 @@ exports.config = {
   // path relative to the current config file
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
+  onPrepare: function() {
+    setTimeout(function() {
+        browser.driver.executeScript(function() {
+            return {
+                width: window.screen.availWidth,
+                height: window.screen.availHeight
+            };
+        }).then(function(result) {
+            browser.driver.manage().window().setSize(result.width, result.height);
+        });
+    });
+},
+
   capabilities: {
     browserName: 'chrome',
   },
