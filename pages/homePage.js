@@ -7,11 +7,11 @@ var HomePage = function () {
   let returnedSearchItems = $$('.a-size-base-plus');
   let searchResult = element(by.xpath(("//*[contains(text(),'results for')]")));
   let searchListing = $$('.a-link-normal.a-text-normal').first();
-  let addToBasket = element(by.xpath(('//*[@id="add-to-cart-button"]')));
+  let addToBasket = $('#add-to-cart-button');
   let subTotal = $$('.a-color-price.hlb-price.a-inline-block.a-text-bold').first();
   let subTotalValue =  element(by.id("attach-accessory-cart-subtotal"));
   let basket = element(by.xpath("//*[(text()='Basket')]"));
-  let basketSubTotal = $$('.a-offscreen').first();
+  let basketSubTotal = element(by.id('sc-subtotal-amount-buybox'));
 
   this.clickSignInButton = function () {
     return browser

@@ -31,24 +31,36 @@ When("the search results are displayed", function () {
 });
 
 Then("the search results has the {string} in it", function (value) {
-    return expect(
-        HomePage
-          .checkItemDescriptinText()
-          .getText().then(val => parseInt(val.substring(0, 2)))).to.eventually.greaterThan(0);
+  return expect(
+    HomePage.checkItemDescriptinText()
+      .getText()
+      .then((val) => parseInt(val.substring(0, 2)))
+  ).to.eventually.greaterThan(0);
 });
 
 Given("I add {string} to my basket", function (value) {
-    browser.wait(EC.elementToBeClickable(HomePage.getSearchListing()), 5000);
-    return HomePage.selectItem(value);
+  browser.wait(EC.elementToBeClickable(HomePage.getSearchListing()), 5000);
+  return HomePage.selectItem(value);
 });
 
-When('I check my basket total', async function () {
-    await browser.wait(EC.presenceOf(HomePage.getSubtotalAmount()), 5000);
-    return expect(HomePage.getSubtotalAmount().getText().then(value => subTotal = parseInt(value.substring(1)))).to.eventually.greaterThan(0);
-  });
+When("I check my basket total", async function () {
+  await browser.wait(EC.presenceOf(HomePage.getSubtotalAmount()), 5000);
+  return expect(
+    HomePage.getSubtotalAmount()
+      .getText()
+      .then((value) => (subTotal = parseInt(value.substring(1))))
+  ).to.eventually.greaterThan(0);
+});
 
-  Then('it should match the price of the item added into basket', async function () {
+Then(
+  "it should match the price of the item added into basket",
+  async function () {
     await HomePage.viewBasket();
     await browser.wait(EC.presenceOf(HomePage.totalBasket()), 5000);
-    return expect(HomePage.totalBasket().getText()).to.eventually.contain(subTotal);
-  });
+    return expect(
+      HomePage.totalBasket()
+        .getText()
+        .then((value) => value.substring(1))
+    ).to.eventually.contain(subTotal);
+  }
+);

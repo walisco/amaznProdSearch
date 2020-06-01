@@ -17,9 +17,11 @@ exports.config = {
             };
         }).then(function(result) {
             browser.driver.manage().window().setSize(result.width, result.height);
+            browser.manage().deleteAllCookies();
         });
     });
 },
+
 
   capabilities: {
     browserName: 'chrome',

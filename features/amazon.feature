@@ -21,5 +21,5 @@ Feature: Amazon customer Journey
   Scenario: Check basket total
     Given when I search for "iceworks 5000"
     When I add "Iceworks 5000" to my basket
-    When I check my basket total
+    And I check my basket total
     Then it should match the price of the item added into basket
