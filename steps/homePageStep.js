@@ -49,5 +49,6 @@ When('I check my basket total', async function () {
 
   Then('it should match the price of the item added into basket', async function () {
     await HomePage.viewBasket();
-    return expect(HomePage.totalBasket().getAttribute('textContent').then(value => value)).to.eventually.contain(subTotal);
+    await browser.wait(EC.presenceOf(HomePage.totalBasket()), 5000);
+    return expect(HomePage.totalBasket().getText()).to.eventually.contain(subTotal);
   });
