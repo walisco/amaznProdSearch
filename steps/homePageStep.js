@@ -6,6 +6,7 @@ var chai = require("chai"),
 chai.use(chaiAsPromised);
 const EC = browser.ExpectedConditions;
 let subTotal;
+let amountEntered;
 
 Given("Amazon.co.uk is open", function () {
   browser.waitForAngularEnabled(false);
@@ -49,7 +50,7 @@ When("I check my basket total", async function () {
   return expect(
     HomePage.getSubtotalAmount()
       .getText()
-      .then((value) => (subTotal = parseInt(value.substring(1))))
+      .then((value) => {amountEntered = value; return subTotal = parseInt(value.substring(1));})
   ).to.eventually.greaterThan(0);
 });
 
@@ -61,7 +62,7 @@ Then(
     return expect(
       HomePage.totalBasket()
         .getText()
-        .then((value) => value.substring(1))
-    ).to.eventually.contain(subTotal);
+        .then((value) => value.replace("\n", "."))
+    ).to.eventually.equal(amountEntered);
   }
 );
