@@ -48,18 +48,16 @@ var HomePage = function () {
       return searchListing;
   }
 
-  this.addItemToBasket =  async function (value) {
-    await searchListing.click();
-    return await addToBasket.click();
+  this.addItemToBasket =  function (value) {
+    return addToBasket.click();
   }
 
   this.getSubtotalAmount = function () {
     return subTotal;
   }
 
-  this.selectItem = async function (value) {
-      await element.all(by.partialLinkText(value)).first().click();
-      return await addToBasket.click()
+  this.selectItem = function (value) {
+      return element.all(by.partialLinkText(value)).first().click();
   }
 
   this.viewBasket = function () {

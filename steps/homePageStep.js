@@ -38,9 +38,10 @@ Then("the search results has the {string} in it", function (value) {
   ).to.eventually.greaterThan(0);
 });
 
-Given("I add {string} to my basket", function (value) {
-  browser.wait(EC.elementToBeClickable(HomePage.getSearchListing()), 5000);
-  return HomePage.selectItem(value);
+Given("I add {string} to my basket", async function (value) {
+  await browser.wait(EC.elementToBeClickable(HomePage.getSearchListing()), 5000);
+  await HomePage.selectItem(value);
+  return HomePage.addItemToBasket();
 });
 
 When("I check my basket total", async function () {
