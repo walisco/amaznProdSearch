@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "test": "protractor ./cucumberConf.js"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^6.0.5",
+    "cucumber-pretty": "^6.0.0",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^6.2.1",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1",
+    "protractor-simple-cucumber-html-reporter-plugin": "^1.0.0"
+  }
+}
